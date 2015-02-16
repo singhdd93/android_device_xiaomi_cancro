@@ -12,23 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+## Specify phone tech before including full_phone
+$(call inherit-product, vendor/slim/config/gsm.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := cancro
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit from cancro device
-$(call inherit-product, device/xiaomi/cancro/cancro.mk)
+# Inherit some common Slim stuff.
+$(call inherit-product, vendor/slim/config/common_full_phone.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/slim/config/nfc_enhanced.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit from cancro device
+$(call inherit-product, device/xiaomi/cancro/aosp_cancro.mk)
 
-PRODUCT_NAME := cm_cancro
+PRODUCT_NAME := slim_cancro
 PRODUCT_DEVICE := cancro
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := XIAOMI
@@ -37,9 +40,6 @@ PRODUCT_MODEL := MI 3W
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=cancro PRODUCT_NAME=cancro
-
-# Custom unofficial build tag
-TARGET_UNOFFICIAL_BUILD_ID := temasek
 
 ## Use the latest approved GMS identifiers unless running a signed build
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_FINGERPRINT=Xiaomi/cancro/cancro:5.0/LRX21M/4.12.8:userdebug/test-keys PRIVATE_BUILD_DESC="cancro-userdebug 5.0 LRX21M 4.12.8 test-keys"
