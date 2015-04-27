@@ -353,6 +353,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.wfd.virtual=0 \
     persist.sys.media.use-awesome=true \
     debug.mdpcomp.4k2kSplit=1
+    
+# Enable USB OTG (CAF commit to Settings)
+ADDITIONAL_BUILD_PROPERTIES += \
+    persist.sys.isUsbOtgEnabled=true
 
 # Permissions
 PRODUCT_COPY_FILES += \
