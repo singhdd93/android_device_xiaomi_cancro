@@ -9,9 +9,13 @@ LOCAL_PATH := device/xiaomi/cancro
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# TRWP recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp \
+    persist.sys.usb.config=mtp,adb \
     camera2.portability.force_api=1
 
 # Charger
@@ -285,7 +289,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8974
-	
+
 # IR package
 PRODUCT_PACKAGES += \
     consumerir.msm8974
@@ -353,10 +357,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.wfd.virtual=0 \
     persist.sys.media.use-awesome=true \
     debug.mdpcomp.4k2kSplit=1
-    
-# Enable USB OTG (CAF commit to Settings)
-ADDITIONAL_BUILD_PROPERTIES += \
-    persist.sys.isUsbOtgEnabled=true
 
 # Permissions
 PRODUCT_COPY_FILES += \
