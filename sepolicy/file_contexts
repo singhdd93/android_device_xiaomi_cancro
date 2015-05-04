@@ -4,3 +4,7 @@
 /sys/devices/virtual/graphics/fb0/color_enhance    u:object_r:display_sysfs:s0
 /sys/devices/virtual/graphics/fb0/sre              u:object_r:display_sysfs:s0
 /sys/devices/virtual/graphics/fb0/rgb              u:object_r:display_sysfs:s0
+
+# Hardware tunables
+/sys/class/leds/red/ramp_step_ms		   u:object_r:sysfs_writable:s0
+/sys/class/leds/red/duty_pcts			   u:object_r:sysfs_writable:s0
